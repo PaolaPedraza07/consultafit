@@ -32,6 +32,8 @@ public class Product {
     Integer precio;
     @Column(name="talla")
     String talla;
+    @Column(name="cantidad")
+    Integer cantidad;
 
 
 
@@ -108,5 +110,13 @@ public class Product {
 
     public void setTalla(String talla) {
         this.talla = talla;
+    }
+
+    public Integer getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(Integer cantidad) {
+        this.cantidad = cantidad;
     }
 }
