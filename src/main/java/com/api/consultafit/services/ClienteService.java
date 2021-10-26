@@ -5,6 +5,7 @@ import com.api.consultafit.repositories.ClienteRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -27,6 +28,13 @@ public class ClienteService {
             return dbResponse.get();
         }
         return "El id no existe en la base de datos";
+    }
+
+
+    public Object listaClientes(){
+        List <Cliente> dbResponse = clienteRepo.findAll();
+//if
+        return dbResponse;
     }
 
     public void eliminarClienteById(int idCliente){

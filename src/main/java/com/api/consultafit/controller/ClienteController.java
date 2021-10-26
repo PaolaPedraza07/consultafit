@@ -4,6 +4,9 @@ import com.api.consultafit.services.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+
+import java.util.List;
+
 @RestController
 @RequestMapping("cliente")
 public class ClienteController {
@@ -38,6 +41,12 @@ public class ClienteController {
         }
         return "El id debe ser mayor a 0";
     }
+
+    @GetMapping("/listar")
+    public Object listar(){
+        return clienteService.listaClientes();
+    }
+
 
     @DeleteMapping ("/eliminar/{idCliente}")
     public String deleteCliente(@PathVariable int idCliente){
