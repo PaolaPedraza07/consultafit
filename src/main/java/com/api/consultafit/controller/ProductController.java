@@ -24,21 +24,28 @@ public class ProductController {
     }
 
     @PostMapping
-    public Product create(@RequestBody /* Tomar los datos del body (Deserializacion //cambiarlo de estructura) */
-                                  Product product){
+    /* Tomar los datos del body (Deserializacion //cambiarlo de estructura) */
+    public Product create(@RequestBody Product product){
         return productService.create(product);
     }
 
-//    @PutMapping("/{id}")
-//    public Product update(@PathVariable /*Tomar valores de ruta y guardarlos para procesarlos*/
-//                                      Integer id, @RequestBody Product product){
-//    return productService.update(id,product);
-//    }
-//
-//    @DeleteMapping("/{id}")
-//    public ResponseEntity<Void> delete(@PathVariable Integer id){
-//        productService.delete(id);
-//        return ResponseEntity.status(HttpStatus.NO_CONTENT).build(); //Builder Pattern
-//    }
+
+    @PutMapping("/{id}")
+    public Product update(@PathVariable /*Tomar valores de ruta y guardarlos para procesarlos*/
+                                      Integer id, @RequestBody Product product){
+    return productService.update(id,product);
+    }
+
+    @GetMapping("/{id}")
+    public Product update(@PathVariable /*Tomar valores de ruta y guardarlos para procesarlos*/
+                                  Integer id){
+        return productService.findById(id);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Integer id){
+        productService.delete(id);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build(); //Builder Pattern
+    }
 
 }
