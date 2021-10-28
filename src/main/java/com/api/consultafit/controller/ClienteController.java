@@ -2,6 +2,8 @@ package com.api.consultafit.controller;
 import com.api.consultafit.models.Cliente;
 import com.api.consultafit.services.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -14,22 +16,14 @@ public class ClienteController {
     ClienteService clienteService;
 
     @PostMapping("/sign-in")
-    public String registroCliente(@RequestBody Cliente cliente){
-        //add fields validations
-        // ADD HERE
-        // if(cliente.getName == null){
-        //
-        // }
-        // if(cliente.getCorreo == null){
-        // }
-        // if(cliente.getDire == null){
-        // }
-        //-----------------------
+    public ResponseEntity<String> registroCliente(@RequestBody Cliente cliente){
         String serviceResponse = clienteService.agregarCliente(cliente);
         if(serviceResponse.equals("Cliente agregado")){
-            return "Se ha añadido correctamente";
+            return new ResponseEntity<String> ("Se ha añadido correctamente", HttpStatus.OK);
+        }else if(serviceResponse.equals("El correo de usuario ya está registrado")){
+            return new ResponseEntity<String> ("El correo de usuario ya está registrado", HttpStatus.BAD_REQUEST);
         }
-        return "Error intente más tarde";
+        return new ResponseEntity<String> ("Error intente más tarde", HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     @GetMapping("/{idCliente}")

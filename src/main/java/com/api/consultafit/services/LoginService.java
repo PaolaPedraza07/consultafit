@@ -17,7 +17,7 @@ public class LoginService {
 
 
     public Cliente validateCliente(Cliente client){
-        return clienteRepo.findByNombre(client.getNombre());
+        return clienteRepo.findByCorreo(client.getCorreo());
     }
 
     public Administrador validateAdmin(Administrador admin){

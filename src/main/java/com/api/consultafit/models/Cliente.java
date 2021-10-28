@@ -21,8 +21,6 @@ public class Cliente {
     String correo;
     @Column(name="Contraseña")
     String contrasenia;
-    @Column(name="Dirección")
-    String direccion;
 
     public int getIdClient() {
         return idClient;
@@ -62,13 +60,5 @@ public class Cliente {
 
     public void setContrasenia(String contrasenia) {
         this.contrasenia = contrasenia;
-    }
-
-    public String getDireccion() {
-        return direccion;
-    }
-
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
     }
 }

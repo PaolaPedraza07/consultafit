@@ -15,6 +15,9 @@ public class ClienteService {
     ClienteRepo clienteRepo;
 
     public String agregarCliente(Cliente cliente){
+        if(clienteRepo.existsByCorreo(cliente.getCorreo())){
+            return "El correo de usuario ya está registrado";
+        }
         Cliente dbResponse = clienteRepo.save(cliente);
         if(dbResponse == null){
             return "Error al ingresar en la base de datos";
