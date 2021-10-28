@@ -20,7 +20,7 @@ public class Product {
     String descrip;
 
     @Id //Con esta notación se define el PrimaryKey
-    @GeneratedValue(strategy = GenerationType.AUTO)//Para el autoincremento
+//    @GeneratedValue(strategy = GenerationType.AUTO)//Para el autoincremento
     @Column(name="id_Producto",unique=true,nullable=false)
     Integer id;
 
