@@ -37,9 +37,11 @@ public class ProductController {
     }
 
     @GetMapping("/{id}")
-    public Product update(@PathVariable /*Tomar valores de ruta y guardarlos para procesarlos*/
+    public Product getProductById(@PathVariable /*Tomar valores de ruta y guardarlos para procesarlos*/
                                   Integer id){
-        return productService.findById(id);
+//        Product a = productService.getProductById(id);
+//        return a;
+        return productService.getProductById(id);
     }
 
     @DeleteMapping("/{id}")

@@ -21,8 +21,12 @@ public class ProductServiceImpl implements ProductService{
     }
 
     @Override
-    public Product findById(Integer id) {
-        return productRepository.getById(id);
+    public Product getProductById(Integer id) {
+//        Product productoDB = productRepository.getById(id);
+//        return productRepository.save(productoDB);
+        return productRepository.findById(id).get();//Gracias señor!!! me has mirado a los ojos
+//        return productRepository.getById(id);
+//        return productoDB;
     }
 
     @Override
