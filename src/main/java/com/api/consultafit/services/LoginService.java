@@ -21,7 +21,7 @@ public class LoginService {
     }
 
     public Administrador validateAdmin(Administrador admin){
-        return adminRepo.findByNombre(admin.getNombre());
+        return adminRepo.findByCorreo(admin.getCorreo());
     }
 
 }

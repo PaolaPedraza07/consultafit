@@ -38,16 +38,17 @@ public class LoginController {
     }
 
     @PostMapping("/login-admin")
-    public Object loginAdmin(@RequestBody Administrador admin) {
+    public ResponseEntity<String> loginAdmin(@RequestBody Administrador admin) {
         Administrador responseService = loginClienteService.validateAdmin(admin);
         if (responseService == null) {
-            return "El usuario no existe";
+            return new ResponseEntity <String> ("El administrador no existe", HttpStatus.NOT_FOUND);
         }else if (responseService.getContrasenia().equals(admin.getContrasenia())) {
-            return responseService;
+            String jwt = jwtUtility.generateJwt(responseService.getIdAdministrador(), responseService.getNombre(), responseService.getCorreo(), "ADMINISTRADOR");
+            return new ResponseEntity<String> (jwt, HttpStatus.OK);
         }else if (!responseService.getContrasenia().equals(admin.getContrasenia())) {
-            return "Contraseña inválida";
+            return new ResponseEntity<String> ("Contraseña inválida", HttpStatus.NOT_FOUND);
         }
-        return "error 500";
+        return new ResponseEntity<String> ("Error, intente más tarde", HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }
 
